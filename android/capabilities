@@ -1,0 +1,27 @@
+import { RemoteOptions } from "webdriverio";
+
+class ProjectCapabilities {
+ private static webDriverPath: string = '/wd/hub';
+ private static webDriverPort: number = 4723;
+
+ static androidBaseCapabilities(appPackage: string = "com.calculated.calc", 
+ appActivity: string = "com.calculated.calc.MainActivity", additionalCaps?: object): RemoteOptions {
+
+ const desiredCapabilities ={
+  platformName: "Android",
+  platformVersion: "11",
+  deviceName: "emulator_arm64",
+  automationName: "UiAutomator2",
+  appPackage: appPackage,
+  appActivity: appActivity,
+  noReset: true
+};
+
+ return {
+   path: this.webDriverPath,
+   port: this.webDriverPort,
+   capabilities: desiredCapabilities
+  }
+ }
+}
+export default ProjectCapabilities;
